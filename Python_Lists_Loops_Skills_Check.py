@@ -1,5 +1,5 @@
-# Name:
-# Period:
+# Name: Denver Ha
+# Period: AM
 
 # ============================================================
 # Python Skills Check — LISTS & LOOPS
@@ -27,36 +27,49 @@
 # TASK 1:
 # Create a list named scores containing 85, 92, 78, 96, 88.
 # Print the entire list and its length using len().
-
+scores = [85,92,78,96,88]
+print(scores)
+print(len(scores))
 
 # TASK 2:
 # Using scores from Task 1, print the FIRST, THIRD, and LAST
 # elements on separate lines. Use indexes, not hard-coded values.
-
+print(scores[0], scores[2], scores[-1])
 
 # TASK 3:
 # Change the third element of scores to 100.
 # Print the updated list. Do not create a replacement list.
-
+scores[2] = 100
+print(scores)
 
 # TASK 4:
 # Create games = ["Minecraft", "Roblox", "Fortnite"].
 # Append "Valorant" and insert "Rocket League" at index 1.
 # Print games. Check the order carefully.
-
+games = ["Minecraft", "Roblox", "Fortnite"]
+games.append("Valorant")
+games.insert(1,"Rocket League")
+print(games)
 
 # TASK 5:
 # Using games from Task 4, remove "Roblox" with remove().
 # Then pop the FIRST item into a variable named removed_game.
 # Print removed_game and the remaining games list.
-
+games.remove("Roblox")
+removed_game = games.pop(0)
+print(removed_game)
+print(games)
 
 # TASK 6:
 # Create colors = ["red", "blue", "green", "yellow", "purple"].
 # Store the index of "green" in green_index using index().
 # Print green_index. Then replace "yellow" with "orange".
 # Print the new list.
-
+colors = ["red", "blue", "green", "yellow", "purple"]
+green_index = colors.index("green")
+print(green_index)
+colors[3] = "orange"
+print(colors)
 
 # ============================================================
 # SECTION 2 — FOR LOOPS & RANGE (TASKS 7–12)
@@ -65,30 +78,38 @@
 # TASK 7:
 # Use a for loop with range() to print numbers 1 through 20,
 # INCLUDING 20. Do not manually print the numbers.
-
+for num in range(1,21):
+    print(num)
 
 # TASK 8:
 # Use a for loop with range() to print 30, 27, 24, ... 0.
 # IMPORTANT: The zero must be included.
-
+for num in range(30,-1,-3):
+    print(num)
 
 # TASK 9:
 # Use a for loop to print all EVEN numbers from 1 to 50.
 # You MUST use an if statement and the % operator inside the loop.
-
+for num in range(1,51):
+    if num % 2 == 0:
+        print(num)
 
 # TASK 10:
 # Create number = 7.
 # Print its multiplication table from 1 through 12 using a for loop.
 # Example line: 7 x 3 = 21
 # Your code must also work if number changes.
-
+number = 7
+for factor in range(1,13):
+    print(number * factor)
 
 # TASK 11:
 # Create students = ["Alex", "Jordan", "Taylor", "Morgan", "Casey"].
 # Use a for loop to print "Student: " followed by each name.
 # Do NOT write five separate print statements.
-
+students = ["Alex", "Jordan", "Taylor", "Morgan", "Casey"]
+for student in students:
+    print("Student:", student)
 
 # TASK 12:
 # Using students, print a NUMBERED roster:
@@ -97,7 +118,8 @@
 # ...
 # 5. Casey
 # Use range(len(students)) OR enumerate().
-
+for i, student in enumerate(students):
+    print(str(i) + ".", student)
 
 # ============================================================
 # SECTION 3 — WHILE LOOPS & VALIDATION (TASKS 13–18)
@@ -107,34 +129,64 @@
 # Create countdown = 10.
 # Use a while loop to print from countdown down to 0.
 # Then print "Blast off!". Avoid an infinite loop.
-
+countdown = 10
+while countdown >= 0:
+    print(countdown)
+    countdown -= 1
+print("Blast off!")
 
 # TASK 14:
 # Create password = "Python123".
 # Keep asking the user for a password until it matches.
 # Print "Access granted" exactly once after a correct entry.
-
+password = "Python123"
+while True:
+    guess = input("Enter password: ")
+    if guess == password:
+        print("Access granted")
+        break
 
 # TASK 15:
 # Ask the user for an integer between 1 and 10 INCLUSIVE.
 # Keep asking while the value is invalid.
 # After a valid entry, print "Valid number".
 # Test 0, 1, 10, and 11.
-
+while True:
+    guess = int(input("Enter an integer 1-10: "))
+    if guess >= 1 and guess <= 10:
+        print("Valid number")
+        break
 
 # TASK 16:
 # Create total = 0.
 # Repeatedly ask for an integer. Add each nonzero entry to total.
 # Stop when the user enters 0, then print total.
 # Example inputs: 5, 8, -2, 0 -> Total: 11.
-
+total = 0
+while True:
+    guess = int(input("Enter integer: "))
+    if guess != 0:
+        total += guess
+    else:
+        print(total)
+        break
 
 # TASK 17:
 # Create secret = "robot" and attempts = 3.
 # Ask the user to guess secret, allowing AT MOST 3 guesses.
 # Print "Correct" if guessed in time; otherwise "Out of attempts".
 # Make sure a correct guess does NOT print both messages.
-
+secret = "robot"
+attempts = 3
+while True:
+    attempts -= 1
+    guess = input("Guess the secret: ")
+    if guess == secret:
+        print("Correct")
+        break
+    elif attempts == 0:
+        print("Out of attempts")
+        break
 
 # TASK 18:
 # Make a while-loop menu:
@@ -143,6 +195,17 @@
 # 3. Exit
 # Repeat until the user enters 3. Handle invalid choices.
 # Print "Goodbye" only when option 2 is selected.
+while True:
+    print("1. Say Hello")
+    print("2. Say Goodbye")
+    print("3. Exit")
+    guess = int(input("Enter your input: "))
+    if guess == 1:
+        print("Hello")
+    elif guess == 2:
+        print("Goodbye")
+    elif guess == 3:
+        break
 
 
 # ============================================================
@@ -153,40 +216,73 @@
 # Create numbers = [4, 8, 15, 16, 23, 42].
 # Use a for loop to calculate and print their total.
 # Do NOT use sum().
-
+numbers = [4, 8, 15, 16, 23, 42]
+total = 0
+for num in numbers:
+    total += num
+print(total)
 
 # TASK 20:
 # Create grades = [90, 85, 78, 92, 88].
 # Use a loop and len() to calculate the average.
 # Print the average. Do NOT use sum().
-
+grades = [90, 85, 78, 92, 88]
+total = 0
+for grade in grades:
+    total += grade
+print(total/len(grades))
 
 # TASK 21:
 # Create numbers = [3, 8, 12, 7, 15, 20, 24, 9].
 # Use ONE loop to count even and odd values separately.
 # Print "Even: [count]" and "Odd: [count]".
-
+numbers = [3, 8, 12, 7, 15, 20, 24, 9]
+odd = 0
+even = 1
+for num in numbers:
+    if num % 2 == 0:
+        even += 1
+    else:
+        odd += 1
+print("Even:", even)
+print("Odd:", odd)
 
 # TASK 22:
 # Create numbers = [-14, -67, -23, -89, -45].
 # Use a loop to find and print the HIGHEST number.
 # Do NOT use max() or sorting.
 # IMPORTANT: Starting your answer at 0 gives a wrong result.
-
+numbers = [-14, -67, -23, -89, -45]
+max = numbers[0]
+for num in numbers:
+    if num > max:
+        max = num
+print(max)
 
 # TASK 23:
 # Create numbers = [14, 67, 23, 89, 45, 12].
 # Use a loop to find and print the LOWEST number.
 # Do NOT use min() or sorting.
 # Your logic must also work with all-negative numbers.
-
+numbers = [14, 67, 23, 89, 45, 12]
+min = numbers[0]
+for num in numbers:
+    if num < min:
+        min = num
+print(min)
 
 # TASK 24:
 # Create numbers = [5, 2, 5, 8, 5, 3, 2, 5].
 # Create target = 5.
 # Use a loop to count how often target appears; print the count.
 # Do NOT use count(). It must work if target changes.
-
+numbers = [5, 2, 5, 8, 5, 3, 2, 5]
+target = 5
+count = 0
+for num in numbers:
+    if num == target:
+        count += 1
+print(count)
 
 # ============================================================
 # SECTION 5 — IN / NOT IN (TASKS 25–30)
@@ -207,20 +303,34 @@
 # 'not in' checks whether a value is missing.
 # Example: "grape" not in ["apple", "banana"] evaluates to True.
 # These expressions are useful in if statements and while loops.
-
+'''
+'in' and 'not in' are opposites. 
+in returns True while not in returns False
+when an element is in a list
+'''
 # TASK 25:
 # Create foods = ["pizza", "burger", "tacos", "sushi", "pasta"].
 # Ask the user to enter a food.
 # Use 'in' to print "Available" or "Not available".
 # Do NOT use index() to search.
-
+foods = ["pizza", "burger", "tacos", "sushi", "pasta"]
+guess = input("Enter a food: ")
+if guess in foods:
+    print("Available")
+else:
+    print("Not available")
 
 # TASK 26:
 # Create supplies = ["pencil", "notebook", "eraser", "backpack"].
 # Ask the user for an item.
 # Use 'not in' to print "Need to buy" if it is missing,
 # otherwise print "Already have it".
-
+supplies = ["pencil", "notebook", "eraser", "backpack"]
+guess = input("Enter an item: ")
+if guess not in supplies:
+    print("Need to buy")
+else:
+    print("Already have it")
 
 # TASK 27:
 # Create usernames = ["alex123", "gamer99", "pythonpro"].
@@ -228,7 +338,13 @@
 # If it is already in the list, print "Username taken".
 # Otherwise append it and print the updated list.
 # Do not allow duplicates.
-
+usernames = ["alex123", "gamer99", "pythonpro"]
+guess = input("Enter a new username: ")
+if guess in usernames:
+    print("Username taken")
+else:
+    usernames.append(guess)
+    print(usernames)
 
 # TASK 28:
 # Modify the idea from Task 27 using a NEW list named accounts.
@@ -236,14 +352,27 @@
 # Use a while loop to keep asking until the entered name
 # is NOT in accounts. Append the accepted name and print accounts.
 # REQUIREMENT: Use 'not in' in your solution.
-
+accounts = ["admin", "guest"]
+while True:
+    guess = input("Enter account name: ")
+    if guess not in accounts:
+        accounts.append(guess)
+        print(accounts)
+        break
 
 # TASK 29:
 # Create secret_words = ["dragon", "robot", "python", "galaxy"].
 # Keep asking the user for a word UNTIL it is in secret_words.
 # Count and print the number of guesses made.
 # A correct first guess should count as 1.
-
+secret_words = ["dragon", "robot", "python", "galaxy"]
+counter = 0
+while True:
+    guess = input("Enter a word: ")
+    counter += 1
+    if guess in secret_words:
+        break
+print(counter)
 
 # TASK 30:
 # Create guests = [].
@@ -251,7 +380,13 @@
 # If a name is already in guests, reject it and ask again.
 # Use a while loop, 'in' or 'not in', and append().
 # Print the finished list and its length.
-
+guests = []
+while len(guests) != 5:
+    guess = input("Enter guest name: ")
+    if guess not in guests:
+        guests.append(guess)
+print(guests)
+print(len(guests))
 
 # ============================================================
 # SECTION 6 — LISTS + FUNCTIONS (TASKS 31–35)
@@ -262,7 +397,13 @@
 # RETURN how many elements are greater than 0.
 # Do NOT use count().
 # Test: count_positive([-2, 0, 4, 9, -1]) -> 2
-
+def count_positive(numbers):
+    counter = 0
+    for num in numbers:
+        if num > 0:
+            counter += 1
+    return counter
+print(count_positive([-2, 0, 4, 9, -1]))
 
 # TASK 32:
 # Create a function named find_item(items, target).
@@ -270,14 +411,26 @@
 # Do NOT use index().
 # Test: find_item(["cat", "dog", "cat"], "cat") -> 0
 # Test: find_item(["cat", "dog"], "fish") -> -1
-
+def find_item(items, target):
+    for i in range(len(items)):
+        if items[i] == target:
+            return i
+    return -1
+print(find_item(["cat", "dog", "cat"], "cat"))
+print(find_item(["cat", "dog"], "fish"))
 
 # TASK 33:
 # Create a function named unique_items(items).
 # RETURN a NEW list without duplicate values, preserving first
 # appearance order. REQUIREMENT: Use 'not in'.
 # Test: unique_items([1, 2, 2, 3, 1, 4]) -> [1, 2, 3, 4]
-
+def unique_items(items):
+    unique_list = []
+    for item in items:
+        if item not in unique_list:
+            unique_list.append(item)
+    return unique_list
+print(unique_items([1, 2, 2, 3, 1, 4]))
 
 # TASK 34:
 # Create a function named common_items(list1, list2).
@@ -285,14 +438,23 @@
 # Include each matching value only once, in list1's order.
 # REQUIREMENT: Use both 'in' and 'not in'.
 # Test: common_items([1, 2, 3, 3], [3, 4, 1]) -> [1, 3]
-
+def common_items(list1, list2):
+    new_list = []
+    for item in list1:
+        if item in list2 and item not in new_list:
+            new_list.append(item)
+    print(new_list)
 
 # TASK 35:
 # Create a function named reverse_list(items).
 # RETURN a NEW list in reverse order, without changing items.
 # Do NOT use reverse(), reversed(), or [::-1].
 # Test: reverse_list([10, 20, 30]) -> [30, 20, 10]
-
+def reverse_list(items):
+    new_list = []
+    for item in items:
+        new_list.insert(0,item)
+    return new_list
 
 # ============================================================
 # SECTION 7 — DEBUGGING (TASKS 36–37)
@@ -307,7 +469,12 @@
 #     print(number)
 #
 # Do NOT replace the while loop with a for loop.
-
+while number <= 5:
+    print(number)
+    number += 1
+'''
+It would keep printing one forever because the number doesn't increase
+'''
 
 # TASK 37:
 # Fix this code so it removes ALL 4s without skipping any.
@@ -321,7 +488,13 @@
 #
 # Expected: [7, 9]
 # HINT: A while loop and 'in' can help.
-
+values = [4, 4, 7, 4, 9]
+while 4 in values:
+    values.remove(4)
+print(values)
+'''
+It could skip a 4 if two fours are next to each other
+'''
 
 # ============================================================
 # FINAL BOSS CHALLENGES (TASKS 38–40)
@@ -340,6 +513,49 @@
 # - Use 'in' to prevent duplicates and 'not in' to reject missing items.
 # - Handle an empty list and invalid menu selections.
 # - Keep running until the user chooses Exit.
+shopping_list = []
+while True:
+    print("1. Add item")
+    print("2. Remove item")
+    print("3. View numbered items")
+    print("4. Search for item")
+    print("5. Exit")
+    user_input = int(input("Choose an option: "))
+
+    if user_input == 1:
+        print("1. Pizza")
+        print("2. Burger")
+        item = input("Enter item number")
+        if item == 1:
+            shopping_list.append("Pizza")
+        elif item == 2:
+            shopping_list.append("Burger")
+
+    elif user_input == 2:
+        print("1. Pizza")
+        print("2. Burger")
+        item = input("Enter the item you want to remove: ")
+        if item == 1:
+            if "Pizza" not in shopping_list:
+                print("You don't have pizza bozo")
+            else:
+                shopping_list.remove("Pizza")
+        elif item == 2:
+            if "Burger" not in shopping_list:
+                print("You don't have burger bozo")
+            else:
+                shopping_list.remove("Burger")
+
+    elif user_input == 3:
+        for item in shopping_list:
+            print(item)
+
+    elif user_input == 4:
+        print("1. Pizza")
+        print("2. Burger")
+
+    elif user_input == 5:
+        break
 
 
 # TASK 39 — GRADE ANALYZER:
@@ -352,9 +568,26 @@
 # Test: analyze_grades([95, 82, 67, 74, 58])
 # Expected: [95, 58, 75.2, 3, 2]
 # Test with a single grade and all-negative values too.
+def analyze_grades(grades):
+    highest = grades[0]
+    lowest = grades[0]
+    total = 0
+    passing = 0
+    failing = 0
+    for grade in grades:
+        if grade > highest:
+            highest = grade
+        elif grade < lowest:
+            lowest = grade
+        if grade >= 70:
+            passing += 1
+        else:
+            failing += 1
+        total += grade
+    average = total / len(grades)
+    return([highest, lowest, average, passing, failing])
 
-
-# TASK 40 — STUDENT ATTENDANCE SYSTEM:
+# TASK 40 — STUDENT ATTENDANCE SYSTEM:h
 # Start with:
 # students = ["Alex", "Jordan", "Taylor", "Morgan", "Casey"]
 # present = []
@@ -370,7 +603,33 @@
 # - Create attendance_percentage(present, students) that RETURNS
 #   the percentage; if students is empty, RETURN 0.
 # - Test with all present, all absent, and a mixture.
+students = ["Alex", "Jordan", "Taylor", "Morgan", "Casey"]
+present = []
+absent = []
+for student in students:
+    while True:
+        attendance = input("Is", student, "Present(P) or Absent(A): ")
+        if attendance == "P":
+            present.append(student)
+            break
+        elif attendance == "A":
+            absent.append(student)
+            break
+        else:
+            print("Invalid input")
 
+def attendance_percentage(present, students):
+    if len(students) == 0:
+        return 0
+    return (len(present) / len(students)) * 100
+
+print("Present:", present)
+print("Absent:", absent)
+print("Number present:", len(present))
+print("Number absent:", len(absent))
+print("Attendance percentage:", str(attendance_percentage(present, students)) + "%")
+if attendance_percentage(present, students) == 100:
+    print("Perfect Attendance!")
 
 # ============================================================
 # END OF CHECKPOINT — REVIEW YOUR WORK BEFORE PUSHING
